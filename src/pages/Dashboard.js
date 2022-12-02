@@ -1,7 +1,51 @@
-
-import React from "react"
-import { Text } from "@chakra-ui/react"
+import { Progress, Flex, Text, Button } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import Layout from '../components/layout';
+import CourseCard from '../components/courseCard';
 
 export default function Dashboard() {
-  return <Text>Dashboard</Text>
+  // to be set up by the contract
+  const [revenuePercentage, setRevenuePercentage] = useState(10);
+  const [revenue, setRevenue] = useState(123);
+
+  const sessions = [
+    {
+      name: 'Introduction to Human Psychology',
+      creator: 'Satoshi Nakamoto',
+      enrolled: 100,
+    },
+    {
+      name: 'Introduction to Mechanics',
+      creator: 'Taylor and Jordan',
+      enrolled: 42
+    }
+  ];
+
+  return (
+    <Layout>
+      <Flex bg="gray.200" flexDir="column">
+        <Flex justifyContent={"space-evenly"}>
+          <Button colorScheme={"blue"}>Add a Live Webinar</Button>
+          <Button colorScheme={"gray"}>Pre-recorded lectures</Button>
+
+        </Flex>
+        <Flex p="4">
+          Total revenue so far:
+          <Text fontWeight={'bold'}> ${revenue}</Text>
+        </Flex>
+        <Progress value={revenuePercentage} />
+
+        <Flex flexDir={'column'} w="100%">
+          <Flex>
+            <Text fontSize="35px" fontWeight={'bold'}>Courses</Text>
+          </Flex>
+          <Flex flexDir="column" p="2">
+          {sessions.map((session, index) => (
+            <CourseCard session={session} />
+            ))}
+          </Flex>
+        </Flex>
+      </Flex>
+    </Layout>
+  );
 }
