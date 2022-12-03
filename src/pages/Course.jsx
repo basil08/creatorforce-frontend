@@ -1,10 +1,9 @@
-import { Progress, Flex, Text, Button, Heading } from '@chakra-ui/react';
-import React, { useState, useParams } from 'react';
+import {  Flex, Text, Button, Heading } from '@chakra-ui/react';
+import React, {  useParams } from 'react';
 import Layout from '../components/layout';
-import CourseCard from '../components/courseCard';
 
 export default function CoursePage({ course }) {
-  const params = useParams();
+  // const params = useParams();
 
   // to be set up by the contract
   return (

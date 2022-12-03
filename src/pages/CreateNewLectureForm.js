@@ -6,7 +6,6 @@ import {
   GridItem,
   Grid,
   Heading,
-  NumberInputField,
   Button,
 } from '@chakra-ui/react';
 import Navbar from '../components/navbar';
@@ -14,7 +13,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  FormHelperText,
 } from '@chakra-ui/react';
 
 import { useCreateAsset } from '@livepeer/react';

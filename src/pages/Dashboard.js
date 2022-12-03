@@ -1,18 +1,12 @@
 import {
-  Progress,
   Flex,
   Text,
   Button,
   Card,
-  CardBody,
-  CardHeader,
-  CardFooter,
   Grid,
   GridItem,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import Layout from '../components/layout';
-import CourseCard from '../components/courseCard';
 import Navbar from '../components/navbar';
 
 export default function Dashboard() {
