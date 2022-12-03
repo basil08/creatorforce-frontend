@@ -39,24 +39,28 @@ export default function Home() {
       instructor: 'Vitalik Buterin',
       enrolled: 2345763,
       description: 'Learn about Ethereum',
+      id: 1,
     },
     {
       name: 'Introduction to Ethereum',
       instructor: 'Vitalik Buterin',
       enrolled: 2345763,
       description: 'Learn about Ethereum',
+      id: 2,
     },
     {
       name: 'Introduction to Ethereum',
       instructor: 'Vitalik Buterin',
       enrolled: 2345763,
       description: 'Learn about Ethereum',
+      id: 3,
     },
     {
       name: 'Introduction to Ethereum',
       instructor: 'Vitalik Buterin',
       enrolled: 2345763,
       description: 'Learn about Ethereum',
+      id: 4,
     },
   ];
 
@@ -76,7 +80,7 @@ export default function Home() {
   }, [shuffle]);
 
   return (
-    <Flex height="fit-content" minHeight="100vh" width="98vw">
+    <Flex height="fit-content" minHeight="100vh">
       <Flex flexDir="column" width={'100%'}>
         <Navbar />
 
