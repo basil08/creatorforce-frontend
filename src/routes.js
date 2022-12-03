@@ -7,6 +7,7 @@ import CreateNewLectureForm from "./pages/CreateNewLectureForm";
 import CreateNewLiveWebinarForm from "./pages/CreateNewLiveWebinarForm";
 import LiveExistingCourse from "./pages/LiveExistingCourse"
 import UploadExistingCourse from "./pages/LiveExistingCourse"
+import BuyCourse from "./pages/CourseMarketing";
 const routes = [
   {
     path: '',
@@ -44,6 +45,10 @@ const routes = [
     path: '/uploadexcourse/:courseId',
     main: () => <UploadExistingCourse />
   },
+  {
+    path: '/buycourse/:courseId',
+    main: () => <BuyCourse />
+  }
 ];
 
 

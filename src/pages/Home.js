@@ -125,7 +125,7 @@ export default function Home() {
                         <Button
                           bg="blue"
                           color="white"
-                          onClick={() => navigateToCourse(course.id)}
+                          onClick={() => navigate(`/buycourse/${course.id}`)}
                         >
                           Go to lesson
                         </Button>
