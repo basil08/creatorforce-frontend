@@ -1,10 +1,10 @@
 import Dashboard from "./pages/Dashboard";
-
+import Home from "./pages/Home";
 
 const routes = [
   {
     path: '',
-    main: () => <Dashboard />
+    main: () => <Home />
   },
 
 ];

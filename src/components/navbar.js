@@ -1,10 +1,11 @@
 import React from 'react';
 import { Flex, Image, Text, Square, Center, Button } from '@chakra-ui/react';
 // import { LinkIcon } from "@chakra-ui/icons";
-
+import Web3 from 'web3'
 
 export default function Navbar() {
   return (
+    
     <Flex justifyContent={'space-between'} height="15vh" width="100%">
       {/* Logo */}
       <Flex w="100%">
