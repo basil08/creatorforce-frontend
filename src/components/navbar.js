@@ -9,6 +9,7 @@ export default function Navbar() {
       justifyContent={'space-between'}
       height="10vh"
       width="100%"
+      bg="gray.200"
     >
       {/* Logo */}
       <Flex m="2">
@@ -29,10 +30,10 @@ export default function Navbar() {
       <Flex>
         <Button bg={'blue'} color="white" variant="solid" m="2">
           {/* <LinkIcon /> */}
-          Connect your wallet!
+          Connect your wallet
         </Button>
         <Button colorScheme="black" variant="outline" m="2">
-          Create your content!
+          Create your content
         </Button>
       </Flex>
     </Flex>

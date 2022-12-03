@@ -6,8 +6,8 @@ import Navbar from "./navbar";
 export default function Layout({ children }) {
   return (
     <Flex minHeight="100vh" height={'fit-content'}>
-      <Flex flexDir="column" bg="gray.100" height={'fit-content'}>
-        <Flex>
+      <Flex flexDir="column">
+        <Flex w="100%">
           <Navbar />
         </Flex>
         <Flex justifyContent={'center'} w="100%">
