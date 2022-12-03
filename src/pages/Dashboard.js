@@ -1,52 +1,103 @@
-import { Progress, Flex, Text, Button } from '@chakra-ui/react';
+import {
+  Progress,
+  Flex,
+  Text,
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  CardFooter,
+  Grid,
+  GridItem,
+} from '@chakra-ui/react';
 import React, { useState } from 'react';
 import Layout from '../components/layout';
 import CourseCard from '../components/courseCard';
+import Navbar from '../components/navbar';
 
 export default function Dashboard() {
   // to be set up by the contract
   const [revenuePercentage, setRevenuePercentage] = useState(10);
-  const [revenue, setRevenue] = useState(123);
+  const [revenue, setRevenue] = useState(12.346);
   const sessions = [
     {
       name: 'Introduction to Human Psychology',
       creator: 'Satoshi Nakamoto',
       enrolled: 100,
-      revenuePercentage : 10
+      revenuePercentage: 10,
     },
     {
       name: 'Introduction to Mechanics',
       creator: 'Taylor and Jordan',
       enrolled: 42,
-      revenuePercentage : 70
-    }
+      revenuePercentage: 70,
+    },
   ];
 
   return (
-    <Layout>
-      <Flex bg="gray.200" flexDir="column">
-        <Flex justifyContent={"space-evenly"}>
-          <Button colorScheme={"blue"}>Add a Live Webinar</Button>
-          <Button colorScheme={"gray"}>Pre-recorded lectures</Button>
+    <Flex minHeight="100vh" height={'fit-content'}>
+      <Flex flexDir="column" width="100%">
+        <Navbar />
 
-        </Flex>
-        <Flex p="4">
-          Total revenue so far:
-          <Text fontWeight={'bold'}> ${revenue}</Text>
-        </Flex>
-        
+        <Grid h="100vh" templateColumns={'repeat(12, 1fr)'} gap={4}>
+          <GridItem
+            rowSpan={1}
+            colStart={3}
+            colEnd={11}
+            borderLeft={'1px solid black'}
+            borderRight={'1px solid black'}
+          >
+            <Flex
+              justifyContent={'space-evenly'}
+              p="4"
+              m="4"
+              borderBottom={'1px solid black'}
+            >
+              <Button size="lg" colorScheme={'blue'}>
+                Add a Live Webinar
+              </Button>
+              <Button size="lg" colorScheme={'gray'}>
+                Pre-recorded lectures
+              </Button>
+            </Flex>
+            <Flex p="4" fontSize={36}>
+              <Text>Total revenue:</Text>
+              <Text fontWeight={'bold'}> {revenue} ETH</Text>
+            </Flex>
 
-        <Flex flexDir={'column'} w="100%">
-          <Flex>
-            <Text fontSize="35px" fontWeight={'bold'}>Courses</Text>
-          </Flex>
-          <Flex flexDir="column" p="2">
-          {sessions.map((session, index) => (
-            <CourseCard size="lg" session={session} />
-            ))}
-          </Flex>
-        </Flex>
+            <Flex flexDir={'column'} w="100%" borderTop={'1px solid black'}>
+              <Flex p="4">
+                <Text fontSize="35px" fontWeight={'bold'}>
+                  Courses offered
+                </Text>
+              </Flex>
+              <Flex flexDir="column" p="2">
+                {sessions.map((course, index) => (
+                  <Card border={'1px solid black'} m="4">
+                    <Flex justifyContent={'space-between'} m="4">
+                      <Flex flexDir="column">
+                        <Text>{course.name}</Text>
+
+                        <Text>By {course.instructor}</Text>
+                        <Text color="gray.600">{course.description}</Text>
+                      </Flex>
+                      <Flex>
+                        <Button
+                          bg="blue"
+                          color="white"
+                          // onClick={() => navigateToCourse(course.id)}
+                        >
+                          Go to lesson
+                        </Button>
+                      </Flex>
+                    </Flex>
+                  </Card>
+                ))}
+              </Flex>
+            </Flex>
+          </GridItem>
+        </Grid>
       </Flex>
-    </Layout>
+    </Flex>
   );
 }
