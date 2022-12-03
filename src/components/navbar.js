@@ -4,7 +4,12 @@ import { Flex, Image, Text, Square, Center, Button } from '@chakra-ui/react';
 
 export default function Navbar() {
   return (
-    <Flex borderBottom={"1px solid black"} dropShadow={""} justifyContent={'space-between'} height="10vh" width="100%">
+    <Flex
+      borderBottom={'1px solid black'}
+      justifyContent={'space-between'}
+      height="10vh"
+      width="100%"
+    >
       {/* Logo */}
       <Flex m="2">
         {/* <Center w="75px">
@@ -13,7 +18,12 @@ export default function Navbar() {
         <Square size="90px" bg="gray.200">
           <Text fontWeight={"bold"}>CreatorForce.</Text>
         </Square> */}
-        <Text fontWeight={'bold'}>CreatorForce.</Text>
+        <Text pl="4" pt="2" fontWeight={'bold'}>
+          Creator
+          <Text color="blue" fontWeight={'bold'} as="span">
+            Force.
+          </Text>
+        </Text>
       </Flex>
 
       <Flex>
