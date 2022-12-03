@@ -15,9 +15,11 @@ import {
   Input,
 } from '@chakra-ui/react';
 
-import { useCreateAsset } from '@livepeer/react';
+import { useCreateAsset, useUpdateAsset } from '@livepeer/react';
 import { useDropzone } from 'react-dropzone';
 
+import UpdateAsset from './UpdateAsset';
+ 
 export default function CreateNewLectureForm() {
   const [video, setVideo] = useState();
   const [vidInput, setVidInput] = useState();
@@ -28,16 +30,19 @@ export default function CreateNewLectureForm() {
     status: createStatus,
     progress,
     error: createError,
-  } = useCreateAsset(
-    video
-      ? {
-          sources: [{ name: video.name, file: video }],
-        }
-      : null
-  );
+  } = useCreateAsset({
+    sources: video ? [{ name: video.name, file: video }] : undefined,
+    mutationConfig: {
+      onSuccess: (res) => {
+        console.log('res', res)
+      }
+    }
+  });
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [updateStatus, setUpdateStatus] = useState(null);
+
 
   const onDrop = useCallback(async acceptedFiles => {
     if (acceptedFiles && acceptedFiles.length > 0 && acceptedFiles?.[0]) {
@@ -58,12 +63,12 @@ export default function CreateNewLectureForm() {
       progress?.[0].phase === 'failed'
         ? 'Failed to process video.'
         : progress?.[0].phase === 'waiting'
-        ? 'Waiting'
-        : progress?.[0].phase === 'uploading'
-        ? `Uploading: ${Math.round(progress?.[0]?.progress * 100)}%`
-        : progress?.[0].phase === 'processing'
-        ? `Processing: ${Math.round(progress?.[0].progress * 100)}%`
-        : null,
+          ? 'Waiting'
+          : progress?.[0].phase === 'uploading'
+            ? `Uploading: ${Math.round(progress?.[0]?.progress * 100)}%`
+            : progress?.[0].phase === 'processing'
+              ? `Processing: ${Math.round(progress?.[0].progress * 100)}%`
+              : null,
     [progress]
   );
 
@@ -128,14 +133,18 @@ export default function CreateNewLectureForm() {
                 </FormControl>
 
                 <Button
-                 onClick={() => {
-                  createAsset();
-                 }}
-                 size="lg"
-                 disabled={!createAsset || createStatus === 'loading'}
+                  onClick={() => {
+                    createAsset();
+                  }}
+                  size="lg"
+                  disabled={!createAsset || createStatus === 'loading'}
                 >
                   Upload
                 </Button>
+                {updateStatus === "success" && <Text>CID: {UpdateAsset.storage.ipfs.cid}</Text>}
+                {
+                  asset?.[0]?.id && <UpdateAsset key={asset?.[0]?.id} asset={asset?.id} onUpdate={setUpdateStatus} />
+                }
               </form>
             </Flex>
           </GridItem>
