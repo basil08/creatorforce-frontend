@@ -1,20 +1,32 @@
 import React from 'react';
-import {Button, Text, Heading, Progress, Card, CardBody, CardFooter, CardHeader } from '@chakra-ui/react';
-
-export default function courseCard({ session }) {
-
-  console.log(session);
+import {Button, Text, Heading, Progress, Card, CardBody, CardFooter, CardHeader, Flex} from '@chakra-ui/react';
+import {Navigate, useNavigate} from 'react-router-dom';
+export default function CourseCard({ course }) {
+  const navigate = useNavigate();
+  const navigateToCourse = id => {
+    let path = `/dashboard/${id}`;
+    navigate(path);
+  };
+  console.log(course);
   return (
-    <Card align="left" size="md" bg = "whiteAlpha.900" borderRadius="3rem" borderColor="blackAlpha.900" borderWidth="0.05em">
-      <CardHeader padding="2em" >
-        <Heading size ="lg">{session.name}</Heading>
-      </CardHeader>
-      <CardBody padding="2em" >
-        <Text>By { session.creator}</Text>
-      </CardBody>
-      {session.home && <div ><Button>Buy Now</Button></div>}
-      {session.revenuePercentage && <Progress borderRadius = "1rem" value={session.revenuePercentage} />}
-      <CardFooter padding="2em" >Total enrolled: {session.enrolled}</CardFooter>
-    </Card>
+    <Card border={'1px solid black'} m="4">
+                    <Flex justifyContent={'space-between'} m="4">
+                      <Flex flexDir="column">
+                        <Text>{course.name}</Text>
+
+                        <Text>By {course.instructor}</Text>
+                        <Text color="gray.600">{course.description}</Text>
+                      </Flex>
+                      <Flex>
+                        <Button
+                          bg="blue"
+                          color="white"
+                          onClick={() => navigateToCourse(course.id)}
+                        >
+                          Go to lesson
+                        </Button>
+                      </Flex>
+                    </Flex>
+                  </Card>
   );
 }

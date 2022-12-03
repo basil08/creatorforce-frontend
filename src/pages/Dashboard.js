@@ -22,6 +22,8 @@ export default function Dashboard() {
   // to be set up by the contract
   const [revenuePercentage, setRevenuePercentage] = useState(10);
   const [revenue, setRevenue] = useState(12.346);
+  const navigate = useNavigate();
+
   const sessions = [
     {
       name: 'Introduction to Human Psychology',
@@ -56,15 +58,15 @@ export default function Dashboard() {
               m="4"
               borderBottom={'1px solid black'}
             >
-              <Button size="lg" colorScheme={'blue'} onClick={()=>Navigate("/dashboard/creator")}>
+              <Button size="lg" colorScheme={'blue'} onClick={()=>navigate("/dashboard/creator")}>
                 Creator
               </Button>
-              <Button size="lg" colorScheme={'gray'} onClick={()=>Navigate("/dashboard/user")}>
+              <Button size="lg" colorScheme={'gray'} onClick={()=>navigate("/dashboard/user")}>
                 User
               </Button>
             </Flex>
             <Flex p="4" fontSize={36}>
-              <Text>Total revenue:</Text>
+              <Text>Total revenue:  </Text>
               <Text fontWeight={'bold'}> {revenue} ETH</Text>
             </Flex>
 
@@ -98,6 +100,18 @@ export default function Dashboard() {
                 ))}
               </Flex>
             </Flex>
+            <Flex
+                justifyContent={'space-evenly'}
+                p="4"
+                m="4"
+              >
+                <Button size="lg" colorScheme={'blue'} onClick={()=>navigate("/newwebinar")}>
+                  Add Live Lecture Course
+                </Button>
+                <Button size="lg" colorScheme={'gray'} onClick={()=>navigate("/newlecture")}>
+                  Add Pre-Recorded Course
+                </Button>
+              </Flex>
           </GridItem>
         </Grid>
       </Flex>
