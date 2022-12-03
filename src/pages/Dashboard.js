@@ -7,21 +7,6 @@ export default function Dashboard() {
   // to be set up by the contract
   const [revenuePercentage, setRevenuePercentage] = useState(10);
   const [revenue, setRevenue] = useState(123);
-  const sessions = [
-    {
-      name: 'Introduction to Human Psychology',
-      creator: 'Satoshi Nakamoto',
-      enrolled: 100,
-      revenuePercentage : 10
-    },
-    {
-      name: 'Introduction to Mechanics',
-      creator: 'Taylor and Jordan',
-      enrolled: 42,
-      revenuePercentage : 70
-    }
-  ];
-
   return (
     <Layout>
       <Flex bg="gray.200" flexDir="column">

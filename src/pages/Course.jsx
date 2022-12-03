@@ -26,16 +26,6 @@ export default function CoursePage(props) {
             </div>
           ))}
         <Button onClick={()=>{}}>Join Meeting Via Link</Button></div>}
-        <Flex flexDir={'column'} w="100%">
-          <Flex>
-            <Text fontSize="35px" fontWeight={'bold'}>Courses</Text>
-          </Flex>
-          <Flex flexDir="column" p="2">
-          {sessions.map((session, index) => (
-            <CourseCard size="lg" session={session} />
-            ))}
-          </Flex>
-        </Flex>
       </Flex>
     </Layout>
   );
