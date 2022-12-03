@@ -1,8 +1,8 @@
-import { Progress, Flex, Text, Button, Heading } from '@chakra-ui/react';
-import React, { useState, useParams } from 'react';
+import {  Flex, Text, Button, Heading } from '@chakra-ui/react';
+import React, {  useParams, useState} from 'react';
 import Layout from '../components/layout';
 import CourseCard from '../components/courseCard';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import Navbar from '../components/navbar';
 import {Grid, GridItem, Card}  from "@chakra-ui/react"
 export default function CoursePage() {

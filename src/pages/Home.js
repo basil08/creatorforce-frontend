@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import {
-  CardBody,
-  CardFooter,
-  CardHeader,
   Card,
   Flex,
   Grid,
   GridItem,
   Heading,
   Text,
-  LinkBox,
   Button,
-  LinkOverlay,
 } from '@chakra-ui/react';
 import Navbar from '../components/navbar';
 import { useEffect } from 'react';

@@ -3,20 +3,34 @@ import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider } from '@chakra-ui/react';
 import * as serviceWorker from './serviceWorker';
-import theme from "./theme";
+import theme from './theme';
+import {
+  LivepeerConfig,
+  createReactClient,
+  studioProvider,
+} from '@livepeer/react';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
+
+const livepeerClient = createReactClient({
+  provider: studioProvider({
+    apiKey: "b86e16d0-92d8-4da8-b925-97739de0e6d4",
+  }),
+});
 
 
 root.render(
   <StrictMode>
     <ColorModeScript />
-    <ChakraProvider theme={theme}>
-      <App />
-    </ChakraProvider>
+
+    <LivepeerConfig client={livepeerClient}>
+      <ChakraProvider theme={theme}>
+        <App />
+      </ChakraProvider>
+    </LivepeerConfig>
   </StrictMode>
 );
 

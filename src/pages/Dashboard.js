@@ -1,19 +1,15 @@
 import {
-  Progress,
   Flex,
   Text,
   Button,
   Card,
-  CardBody,
-  CardHeader,
-  CardFooter,
   Grid,
   GridItem,
 } from '@chakra-ui/react';
-import React, { useState} from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Layout from '../components/layout';
 import CourseCard from '../components/courseCard';
+import React, { useState } from 'react';
 import Navbar from '../components/navbar';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
