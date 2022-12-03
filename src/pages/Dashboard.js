@@ -7,7 +7,6 @@ export default function Dashboard() {
   // to be set up by the contract
   const [revenuePercentage, setRevenuePercentage] = useState(10);
   const [revenue, setRevenue] = useState(123);
-
   const sessions = [
     {
       name: 'Introduction to Human Psychology',

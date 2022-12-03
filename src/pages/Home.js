@@ -19,28 +19,21 @@ export default function Home(){
         }
       ];
     return (<div>
-        <Flex height="fit-content" minHeight="100vh" width="98vw">
-      <Flex flexDir="column" width={"100%"}>
         <Navbar />
-      </Flex>
-    </Flex>
-        <h1>Discover Trending Courses</h1>
-        <Layout>
     <SimpleGrid columns={1}>
-      <Flex bg="gray.200" flexDir="column">
-        <Flex flexDir={'column'} w="100%">
-          <Flex>
-            <Text fontSize="35px" fontWeight={'bold'}>Courses</Text>
+      <Flex  flexDir="column">
+        <Flex flexDir={'column'} w="100%" >
+          <Flex text-align="center" p="4rem" borderColor="black">
+            <Text fontSize="35px" fontWeight={'bold'} align="center">Discover Trending Courses</Text>
           </Flex>
           <Flex flexDir="column" p="2">
           {sessions.map((session, index) => (
-            <CourseCard size="lg" padding="2em" session={session} />
+            <CourseCard size="lg" session={session} />
             ))}
           </Flex>
         </Flex>
       </Flex>
     </SimpleGrid>
-    </Layout>
     </div>)
 }
 

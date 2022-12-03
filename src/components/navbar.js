@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex, Image, Text, Square, Center, Button } from '@chakra-ui/react';
 // import { LinkIcon } from "@chakra-ui/icons";
-
+import web3 from 'web3'
 export default function Navbar() {
   return (
     <Flex
