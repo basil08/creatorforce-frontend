@@ -6,10 +6,6 @@ const routes = [
     path: '',
     main: () => <Home />
   },
-  {
-    path: '/dashboard',
-    main: () => <Dashboard />
-  }
 ];
 
 
