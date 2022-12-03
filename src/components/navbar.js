@@ -1,28 +1,37 @@
 import React from 'react';
 import { Flex, Image, Text, Square, Center, Button } from '@chakra-ui/react';
 // import { LinkIcon } from "@chakra-ui/icons";
-import Web3 from 'web3'
 
 export default function Navbar() {
   return (
-    
-    <Flex justifyContent={'space-between'} height="15vh" width="100%">
+    <Flex
+      borderBottom={'1px solid black'}
+      justifyContent={'space-between'}
+      height="10vh"
+      width="100%"
+    >
       {/* Logo */}
-      <Flex w="100%">
-        <Center w="75px">
-          <Image boxSize={'40px'} objectFit="cover" src="/logo.svg" />
+      <Flex m="2">
+        {/* <Center w="75px">
+          <Image boxSize={'40px'} bg="gray.200" objectFit="cover" src="/logo.svg" />
         </Center>
-        <Square size="90px">
+        <Square size="90px" bg="gray.200">
           <Text fontWeight={"bold"}>CreatorForce.</Text>
-        </Square>
+        </Square> */}
+        <Text pl="4" pt="2" fontWeight={'bold'}>
+          Creator
+          <Text color="blue" fontWeight={'bold'} as="span">
+            Force.
+          </Text>
+        </Text>
       </Flex>
 
       <Flex>
-        <Button colorScheme={"blue"} variant="solid" m="2">
+        <Button bg={'blue'} color="white" variant="solid" m="2">
           {/* <LinkIcon /> */}
           Connect your wallet!
         </Button>
-        <Button variant="outline" m="2">
+        <Button colorScheme="black" variant="outline" m="2">
           Create your content!
         </Button>
       </Flex>

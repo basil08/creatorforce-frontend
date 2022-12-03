@@ -2,6 +2,7 @@ import {React, useState} from 'react';
 import { Flex, Text, Button, Progress, SimpleGrid } from '@chakra-ui/react';
 import Layout from '../components/layout';
 import CourseCard from '../components/courseCard';
+import Navbar from '../components/navbar';
 export default function Home(){
     const sessions = [
         {
@@ -18,6 +19,11 @@ export default function Home(){
         }
       ];
     return (<div>
+        <Flex height="fit-content" minHeight="100vh" width="98vw">
+      <Flex flexDir="column" width={"100%"}>
+        <Navbar />
+      </Flex>
+    </Flex>
         <h1>Discover Trending Courses</h1>
         <Layout>
     <SimpleGrid columns={1}>
@@ -37,3 +43,4 @@ export default function Home(){
     </Layout>
     </div>)
 }
+
