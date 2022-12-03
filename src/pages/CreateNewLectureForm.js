@@ -1,5 +1,14 @@
-import React, { useState } from 'react';
-import { Flex, Textarea, Text, GridItem, Grid, Heading, NumberInputField } from '@chakra-ui/react';
+import React, { useState, useCallback, useMemo } from 'react';
+import {
+  Flex,
+  Textarea,
+  Text,
+  GridItem,
+  Grid,
+  Heading,
+  NumberInputField,
+  Button,
+} from '@chakra-ui/react';
 import Navbar from '../components/navbar';
 import {
   FormControl,
@@ -8,13 +17,61 @@ import {
   FormHelperText,
 } from '@chakra-ui/react';
 
+import { useCreateAsset } from '@livepeer/react';
+import { useDropzone } from 'react-dropzone';
+
 export default function CreateNewLectureForm() {
-  const [ description, setDescription ] = useState("");
+  const [video, setVideo] = useState();
+  const [vidInput, setVidInput] = useState();
 
+  const {
+    mutate: createAsset,
+    data: asset,
+    status: createStatus,
+    progress,
+    error: createError,
+  } = useCreateAsset(
+    video
+      ? {
+          sources: [{ name: video.name, file: video }],
+        }
+      : null
+  );
 
-  const handleInputChange = (e) => {
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+
+  const onDrop = useCallback(async acceptedFiles => {
+    if (acceptedFiles && acceptedFiles.length > 0 && acceptedFiles?.[0]) {
+      setVideo(acceptedFiles[0]);
+    }
+  }, []);
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: {
+      'video/*': ['.mp4'],
+    },
+    maxFiles: 1,
+    onDrop,
+  });
+
+  const progressFormatted = useMemo(
+    () =>
+      progress?.[0].phase === 'failed'
+        ? 'Failed to process video.'
+        : progress?.[0].phase === 'waiting'
+        ? 'Waiting'
+        : progress?.[0].phase === 'uploading'
+        ? `Uploading: ${Math.round(progress?.[0]?.progress * 100)}%`
+        : progress?.[0].phase === 'processing'
+        ? `Processing: ${Math.round(progress?.[0].progress * 100)}%`
+        : null,
+    [progress]
+  );
+
+  const handleInputChange = e => {
     setDescription(e.target.value);
-  }
+  };
 
   return (
     <Flex height="fit-content" minHeight="100vh">
@@ -33,9 +90,9 @@ export default function CreateNewLectureForm() {
               <form>
                 <FormControl p="4">
                   <FormLabel>Title</FormLabel>
-                  <Input type="title" border={"1px solid black"} />
+                  <Input type="title" border={'1px solid black'} />
                 </FormControl>
-                <FormControl p='4'>
+                <FormControl p="4">
                   <FormLabel>Description</FormLabel>
                   <Textarea
                     value={description}
@@ -45,6 +102,42 @@ export default function CreateNewLectureForm() {
                   />
                 </FormControl>
 
+                <FormControl p="2">
+                  <FormLabel>Upload .mp4 file</FormLabel>
+
+                  <Flex {...getRootProps()}>
+                    <Input
+                      type="file"
+                      onChange={e => {
+                        if (e.target.files) {
+                          setVideo(e.target.files[0]);
+                        }
+                      }}
+                    ></Input>
+                    <Flex>
+                      <Text>Drag and drop or browse files</Text>
+                    </Flex>
+                  </Flex>
+
+                  {createError?.message && <Text>{createError.message}</Text>}
+
+                  {video ? (
+                    <Flex as="span">{video.name}</Flex>
+                  ) : (
+                    <Text>Select a video file to upload.</Text>
+                  )}
+                  {progressFormatted && <Text>{progressFormatted}</Text>}
+                </FormControl>
+
+                <Button
+                 onClick={() => {
+                  createAsset();
+                 }}
+                 size="lg"
+                 disabled={!createAsset || createStatus === 'loading'}
+                >
+                  Upload
+                </Button>
               </form>
             </Flex>
           </GridItem>
