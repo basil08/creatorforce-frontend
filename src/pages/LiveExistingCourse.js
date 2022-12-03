@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Flex, Textarea, Text, GridItem, Grid, Heading, NumberInputField } from '@chakra-ui/react';
+import { Flex, Textarea, Text, GridItem, Grid, Heading, NumberInputField, NumberIncrementStepper, NumberDecrementStepper, NumberInput, NumberInputStepper, InputGroup } from '@chakra-ui/react';
 import Navbar from '../components/navbar';
 import {
   FormControl,
@@ -10,14 +10,12 @@ import {
 
 export default function CreateNewLectureForm() {
   const [ description, setDescription ] = useState("");
-  const [numberOfFields, setNumber] = useState("")
+
 
   const handleInputChange = (e) => {
     setDescription(e.target.value);
   }
-  const handleNumberChange = (e) => {
-    setNumber(e.target.value);
-  }
+
   return (
     <Flex height="fit-content" minHeight="100vh">
       <Flex flexDir="column" width={'100%'}>
@@ -31,14 +29,14 @@ export default function CreateNewLectureForm() {
             borderRight={'1px solid black'}
           >
             <Flex p="4" flexDir={'column'}>
-              <Heading p="2">Upload a pre-recorded lecture</Heading>
+              <Heading p="2">Add a Live Lecture</Heading>
               <form>
                 <FormControl p="4">
-                  <FormLabel>Title</FormLabel>
+                  <FormLabel>Title of Lecture</FormLabel>
                   <Input type="title" border={"1px solid black"} />
                 </FormControl>
                 <FormControl p='4'>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>Description of Lecture</FormLabel>
                   <Textarea
                     value={description}
                     onChange={handleInputChange}
@@ -46,6 +44,22 @@ export default function CreateNewLectureForm() {
                     size="sm"
                   />
                 </FormControl>
+                <FormControl p='4'>
+                  <FormLabel>Start Time</FormLabel>
+                  <InputGroup><Input
+                    placeholder="Select Date and Time"
+                    size="md"
+                    type="datetime-local"
+                    /></InputGroup>
+                </FormControl>
+                <FormControl p='4'>
+                  <FormLabel>End Time</FormLabel>
+                  <InputGroup><Input
+                    placeholder="Select Date and Time"
+                    size="md"
+                    type="datetime-local"
+                    /></InputGroup>
+                  </FormControl>
                 
               </form>
             </Flex>

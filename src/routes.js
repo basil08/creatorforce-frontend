@@ -5,7 +5,8 @@ import CoursePageUser from "./pages/CoursePageUser";
 import DashboardUser from "./pages/DashboardUser";
 import CreateNewLectureForm from "./pages/CreateNewLectureForm";
 import CreateNewLiveWebinarForm from "./pages/CreateNewLiveWebinarForm";
-
+import LiveExistingCourse from "./pages/LiveExistingCourse"
+import UploadExistingCourse from "./pages/LiveExistingCourse"
 const routes = [
   {
     path: '',
@@ -28,14 +29,21 @@ const routes = [
     main: () => <CreateNewLectureForm />
   },
   {
-    path: '/dashboard/:courseId/creator',
+    path: '/user/course/:courseId',
+    main: () => <CoursePageUser />
+  },
+  {
+    path: '/creator/course/:courseId',
     main: () => <CoursePage />
   },
   {
-    path: '/dashboard/:courseId/user',
-    main: () => <CoursePageUser />
+    path: '/liveexcourse/:courseId',
+    main: () => <LiveExistingCourse />
   },
-
+  {
+    path: '/uploadexcourse/:courseId',
+    main: () => <UploadExistingCourse />
+  },
 ];
 
 

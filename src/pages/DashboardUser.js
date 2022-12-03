@@ -31,12 +31,14 @@ import {
         creator: 'Satoshi Nakamoto',
         enrolled: 100,
         revenuePercentage: 10,
+        id: 1,
       },
       {
         name: 'Introduction to Mechanics',
         creator: 'Taylor and Jordan',
         enrolled: 42,
         revenuePercentage: 70,
+        id: 2,
       },
     ];
     const currentCourses = [
@@ -139,7 +141,7 @@ import {
                           <Button
                             bg="blue"
                             color="white"
-                            // onClick={() => navigateToCourse(course.id)}
+                            onClick={() => navigate(`/user/course/${course.id}`)}
                           >
                             Go to lesson
                           </Button>

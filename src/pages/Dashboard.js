@@ -90,7 +90,7 @@ export default function Dashboard() {
                         <Button
                           bg="blue"
                           color="white"
-                          // onClick={() => navigateToCourse(course.id)}
+                          onClick={() => navigate(`/creator/course/${course.id}`)}
                         >
                           Go to lesson
                         </Button>

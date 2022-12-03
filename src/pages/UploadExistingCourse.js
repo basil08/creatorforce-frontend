@@ -8,7 +8,7 @@ import {
   FormHelperText,
 } from '@chakra-ui/react';
 
-export default function CreateNewLectureForm() {
+export default function UploadExistingCourse() {
   const [ description, setDescription ] = useState("");
   const [numberOfFields, setNumber] = useState("")
 
@@ -34,11 +34,11 @@ export default function CreateNewLectureForm() {
               <Heading p="2">Upload a pre-recorded lecture</Heading>
               <form>
                 <FormControl p="4">
-                  <FormLabel>Title</FormLabel>
+                  <FormLabel>Title of Lecture</FormLabel>
                   <Input type="title" border={"1px solid black"} />
                 </FormControl>
                 <FormControl p='4'>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>Description of Lecture</FormLabel>
                   <Textarea
                     value={description}
                     onChange={handleInputChange}
