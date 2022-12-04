@@ -1,7 +1,5 @@
-import {  Flex, Text, Button, Heading } from '@chakra-ui/react';
-import React, {  useParams, useState} from 'react';
-import Layout from '../components/layout';
-import CourseCard from '../components/courseCard';
+import {  Flex, Text, Button } from '@chakra-ui/react';
+import React, {   useState} from 'react';
 import { useNavigate} from 'react-router-dom';
 import Navbar from '../components/navbar';
 import {Grid, GridItem, Card}  from "@chakra-ui/react"
@@ -17,7 +15,7 @@ export default function CoursePage() {
     <Flex minHeight="100vh" height={'fit-content'}>
         <Flex flexDir="column" width="100%">
           <Navbar />
-          
+
           <Grid h="100vh" templateColumns={'repeat(12, 1fr)'} gap={4}>
             <GridItem
               rowSpan={1}
@@ -57,7 +55,7 @@ export default function CoursePage() {
                             Join Live Lecture
                           </Button>
                         </Flex>
-                    
+
                   </Flex>}
                   {course.reclec && <div><Text>This course has recorded lectures </Text>
                   <Flex
@@ -88,7 +86,7 @@ export default function CoursePage() {
                       </Flex>
                     </Card>
                   ))}
-                </Flex></div>} 
+                </Flex></div>}
             </GridItem>
           </Grid>
         </Flex>

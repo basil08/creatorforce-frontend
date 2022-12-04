@@ -6,13 +6,9 @@ import {
   Grid,
   GridItem,
 } from '@chakra-ui/react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import Layout from '../components/layout';
-import CourseCard from '../components/courseCard';
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import Navbar from '../components/navbar';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
-
 
 export default function Dashboard() {
   // to be set up by the contract
@@ -39,7 +35,7 @@ export default function Dashboard() {
     <Flex minHeight="100vh" height={'fit-content'}>
       <Flex flexDir="column" width="100%">
         <Navbar />
-        
+
         <Grid h="100vh" templateColumns={'repeat(12, 1fr)'} gap={4}>
           <GridItem
             rowSpan={1}

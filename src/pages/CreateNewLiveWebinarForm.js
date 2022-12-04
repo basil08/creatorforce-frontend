@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
-import { Flex, Textarea, Text, GridItem, Grid, Heading, NumberInputField, NumberIncrementStepper, NumberDecrementStepper, NumberInput, NumberInputStepper, InputGroup } from '@chakra-ui/react';
+import {
+  Flex,
+  Textarea,
+  GridItem,
+  Grid,
+  Heading,
+  NumberInput,
+  NumberInputField,
+  InputGroup,
+} from '@chakra-ui/react';
 import Navbar from '../components/navbar';
 import {
   FormControl,
   FormLabel,
   Input,
-  FormHelperText,
 } from '@chakra-ui/react';
 
 export default function CreateNewLectureForm() {
-  const [ description, setDescription ] = useState("");
+  const [description, setDescription] = useState('');
 
-
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     setDescription(e.target.value);
-  }
+  };
 
   return (
     <Flex height="fit-content" minHeight="100vh">
@@ -33,9 +40,9 @@ export default function CreateNewLectureForm() {
               <form>
                 <FormControl p="4">
                   <FormLabel>Title</FormLabel>
-                  <Input type="title" border={"1px solid black"} />
+                  <Input type="title" border={'1px solid black'} />
                 </FormControl>
-                <FormControl p='4'>
+                <FormControl p="4">
                   <FormLabel>Description</FormLabel>
                   <Textarea
                     value={description}
@@ -44,35 +51,38 @@ export default function CreateNewLectureForm() {
                     size="sm"
                   />
                 </FormControl>
-                <FormControl p='4'>
+                <FormControl p="4">
                   <FormLabel>Start Time</FormLabel>
-                  <InputGroup><Input
-                    placeholder="Select Date and Time"
-                    size="md"
-                    type="datetime-local"
-                    /></InputGroup>
+                  <InputGroup>
+                    <Input
+                      placeholder="Select Date and Time"
+                      size="md"
+                      type="datetime-local"
+                    />
+                  </InputGroup>
                 </FormControl>
-                <FormControl p='4'>
+                <FormControl p="4">
                   <FormLabel>End Time</FormLabel>
-                  <InputGroup><Input
-                    placeholder="Select Date and Time"
-                    size="md"
-                    type="datetime-local"
-                    /></InputGroup>
-                  </FormControl>
-                  <FormControl p='4'>
-                    <FormLabel>Amount</FormLabel>
-                    <NumberInput>
-                        <NumberInputField />
-                    </NumberInput>
+                  <InputGroup>
+                    <Input
+                      placeholder="Select Date and Time"
+                      size="md"
+                      type="datetime-local"
+                    />
+                  </InputGroup>
                 </FormControl>
-                <FormControl p='4'>
-                    <FormLabel>Maximum Number of Participants</FormLabel>
-                    <NumberInput >
-                        <NumberInputField placeholder='Leave Empty if unbounded' />
-                    </NumberInput>
+                <FormControl p="4">
+                  <FormLabel>Amount</FormLabel>
+                  <NumberInput>
+                    <NumberInputField />
+                  </NumberInput>
                 </FormControl>
-                
+                <FormControl p="4">
+                  <FormLabel>Maximum Number of Participants</FormLabel>
+                  <NumberInput>
+                    <NumberInputField placeholder="Leave Empty if unbounded" />
+                  </NumberInput>
+                </FormControl>
               </form>
             </Flex>
           </GridItem>
